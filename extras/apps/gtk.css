@@ -1,0 +1,56 @@
+@define-color bench_bg #030403;
+@define-color bench_surface #090a08;
+@define-color bench_fg #c8c2aa;
+@define-color bench_dim #625f55;
+@define-color bench_border #343832;
+@define-color bench_error #c94f37;
+@define-color bench_focus #6f9ed0;
+@define-color bench_selection #0d1722;
+
+window,
+dialog,
+popover,
+menu,
+headerbar {
+  background: @bench_bg;
+  color: @bench_fg;
+}
+
+button,
+entry,
+combobox,
+menubar,
+toolbar,
+notebook > header {
+  background: @bench_surface;
+  border-color: @bench_border;
+  border-radius: 0;
+  color: @bench_fg;
+}
+
+button:hover,
+row:hover,
+treeview:hover,
+notebook tab:hover {
+  background: @bench_selection;
+  color: @bench_fg;
+}
+
+button:checked,
+row:selected,
+treeview:selected,
+notebook tab:checked {
+  background: @bench_selection;
+  color: @bench_focus;
+}
+
+entry:focus,
+button:focus {
+  border-color: @bench_focus;
+  box-shadow: none;
+}
+
+label:disabled,
+button:disabled {
+  color: @bench_dim;
+}

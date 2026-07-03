@@ -1,0 +1,190 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "bottom",
+  "height": 24,
+  "spacing": 0,
+  "margin-bottom": 0,
+  "modules-left": ["custom/menu", "custom/dev", "hyprland/workspaces", "hyprland/submap"],
+  "modules-center": ["custom/project", "custom/git", "hyprland/window", "custom/keystroke"],
+  "modules-right": [
+    "custom/todo",
+    "custom/updates",
+    "custom/traffic",
+    "idle_inhibitor",
+    "tray",
+    "network",
+    "pulseaudio",
+    "cpu",
+    "memory",
+    "custom/cpu_temp",
+    "custom/gpu_usage",
+    "custom/gpu_temp",
+    "battery",
+    "custom/weather",
+    "clock"
+  ],
+
+  "custom/menu": {
+    "format": " WM ",
+    "on-click": "omarchy-menu",
+    "on-click-right": "xdg-terminal-exec",
+    "tooltip-format": "Lain Wired i3 menu"
+  },
+  "custom/dev": {
+    "format": " DEV ",
+    "on-click": "$HOME/.local/bin/omarchy-lain-dev-layout",
+    "on-click-right": "xdg-terminal-exec",
+    "tooltip-format": "Launch developer workspace layout"
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "0",
+      "default": "-"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+  "hyprland/submap": {
+    "format": "[{}]",
+    "max-length": 16
+  },
+  "custom/project": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/project.sh",
+    "interval": 2,
+    "return-type": "json"
+  },
+  "custom/git": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/gitstatus.sh",
+    "interval": 2,
+    "return-type": "json",
+    "tooltip": false
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 64,
+    "separate-outputs": true
+  },
+  "custom/keystroke": {
+    "format": "{}",
+    "exec": "python3 $HOME/.config/waybar/scripts/keystroke.py",
+    "tooltip": false
+  },
+  "custom/updates": {
+    "format": "UPD {}",
+    "exec": "$HOME/.config/waybar/scripts/updates.sh",
+    "return-type": "json",
+    "interval": 3600,
+    "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
+    "tooltip-format": "System package updates"
+  },
+  "custom/weather": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/weather.sh",
+    "interval": 600,
+    "return-type": "json"
+  },
+  "custom/traffic": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/traffic.sh",
+    "interval": 2,
+    "return-type": "json"
+  },
+  "custom/todo": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/todo.sh",
+    "interval": 10,
+    "return-type": "json",
+    "on-click": "omarchy-launch-editor $HOME/todo.txt"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "NO SLEEP",
+      "deactivated": "SLEEP OK"
+    }
+  },
+  "tray": {
+    "spacing": 5,
+    "icon-size": 14
+  },
+  "network": {
+    "format-wifi": "WIFI {signalStrength}%",
+    "format-ethernet": "ETH",
+    "format-disconnected": "NET OFF",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)",
+    "tooltip-format-ethernet": "Connected",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "on-click": "omarchy-launch-wifi"
+  },
+  "pulseaudio": {
+    "format": "VOL {volume}%",
+    "format-muted": "MUTE",
+    "scroll-step": 5,
+    "on-click": "omarchy-launch-audio",
+    "on-click-right": "pamixer -t"
+  },
+  "cpu": {
+    "format": "CPU {usage}%",
+    "interval": 2,
+    "on-click": "omarchy-launch-or-focus-tui btop"
+  },
+  "memory": {
+    "format": "RAM {percentage}%",
+    "interval": 5
+  },
+  "custom/cpu_temp": {
+    "format": "CT {}",
+    "exec": "$HOME/.config/waybar/scripts/cputemp.sh",
+    "interval": 5,
+    "return-type": "json"
+  },
+  "custom/gpu_usage": {
+    "format": "GPU {}",
+    "exec": "$HOME/.config/waybar/scripts/gpuusage.sh",
+    "interval": 2,
+    "return-type": "json"
+  },
+  "custom/gpu_temp": {
+    "format": "GT {}",
+    "exec": "$HOME/.config/waybar/scripts/gputemp.sh",
+    "interval": 5,
+    "return-type": "json"
+  },
+  "battery": {
+    "format": "BAT {capacity}%",
+    "format-charging": "CHG {capacity}%",
+    "format-plugged": "AC",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "interval": 10,
+    "on-click": "omarchy-menu system"
+  },
+  "clock": {
+    "format": "{:%a %d.%m %H:%M}",
+    "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+    "tooltip": false,
+    "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+  }
+}

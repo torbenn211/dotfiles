@@ -1,0 +1,52 @@
+@define-color bg #030403;
+@define-color fg #c8c2aa;
+@define-color fg_dim #625f55;
+@define-color accent #6f9ed0;
+@define-color muted #343832;
+@define-color selection #0d1722;
+@define-color selected_text #8fb6dd;
+
+* {
+  border-radius: 0;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+window {
+  background-color: @bg;
+  border: 2px solid @muted;
+}
+
+input {
+  background-color: @bg;
+  border: 0;
+  border-bottom: 1px solid @muted;
+  color: @fg;
+  padding: 8px 10px;
+}
+
+#entry {
+  background-color: @bg;
+  color: @fg;
+  margin: 0;
+  padding: 7px 10px;
+}
+
+#entry:selected {
+  background-color: @selection;
+  border-left: 3px solid @accent;
+  color: @selected_text;
+}
+
+scrollbar {
+  background-color: @bg;
+}
+
+scrollbar slider {
+  background-color: @muted;
+}
+
+scrollbar slider:hover {
+  background-color: @accent;
+}

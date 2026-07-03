@@ -1,0 +1,82 @@
+{
+  "theme": {
+    "mode": "dark",
+    "dark": "One Dark",
+    "light": "One Light"
+  },
+  "ui_font_family": "JetBrains Mono",
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 14,
+  "theme_overrides": {
+    "One Dark": {
+      "editor.background": "#030403",
+      "editor.foreground": "#c8c2aa",
+      "panel.background": "#030403",
+      "panel.focused_border": "#6f9ed0",
+      "border": "#343832",
+      "surface.background": "#030403",
+      "elevated_surface.background": "#090a08",
+      "element.background": "#090a08",
+      "element.hover": "#0d0f0c",
+      "element.active": "#0d1722",
+      "text": "#c8c2aa",
+      "text.muted": "#716b5d",
+      "text.placeholder": "#343832",
+      "editor.line_number": "#343832",
+      "editor.active_line_number": "#8fb6dd",
+      "editor.active_line.background": "#090a08",
+      "editor.selection.background": "#0d1722",
+      "terminal.background": "#030403",
+      "terminal.foreground": "#c8c2aa",
+      "terminal.ansi.black": "#090a08",
+      "terminal.ansi.red": "#c94f37",
+      "terminal.ansi.green": "#8ba36f",
+      "terminal.ansi.yellow": "#d0a85a",
+      "terminal.ansi.blue": "#6f9ed0",
+      "terminal.ansi.magenta": "#b58ad6",
+      "terminal.ansi.cyan": "#76b7a8",
+      "terminal.ansi.white": "#c8c2aa",
+      "terminal.ansi.bright_black": "#343832",
+      "terminal.ansi.bright_red": "#d1624f",
+      "terminal.ansi.bright_green": "#a6b98a",
+      "terminal.ansi.bright_yellow": "#e6c06f",
+      "terminal.ansi.bright_blue": "#8fb6dd",
+      "terminal.ansi.bright_magenta": "#c79ee6",
+      "terminal.ansi.bright_cyan": "#9bd8ca",
+      "terminal.ansi.bright_white": "#e7dec8",
+      "syntax": {
+        "comment": {
+          "color": "#343832",
+          "font_style": "italic"
+        },
+        "keyword": {
+          "color": "#c94f37",
+          "font_weight": 700
+        },
+        "string": {
+          "color": "#8ba36f"
+        },
+        "number": {
+          "color": "#d0a85a"
+        },
+        "function": {
+          "color": "#6f9ed0"
+        },
+        "type": {
+          "color": "#e6c06f"
+        },
+        "property": {
+          "color": "#b58ad6"
+        }
+      },
+      "accents": [
+        "#c94f37",
+        "#d1624f",
+        "#d0a85a",
+        "#8ba36f",
+        "#6f9ed0",
+        "#b58ad6"
+      ]
+    }
+  }
+}

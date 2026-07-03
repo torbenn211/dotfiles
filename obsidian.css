@@ -1,0 +1,72 @@
+.theme-dark,
+.theme-light {
+  --background-primary: #030403;
+  --background-primary-alt: #030403;
+  --background-secondary: #060706;
+  --background-secondary-alt: #090a08;
+  --background-modifier-border: #343832;
+  --background-modifier-hover: #090a08;
+  --background-modifier-active-hover: #0d1722;
+  --text-normal: #c8c2aa;
+  --text-muted: #716b5d;
+  --text-faint: #343832;
+  --text-selection: #0d1722;
+  --text-title-h1: #c94f37;
+  --text-title-h2: #e6c06f;
+  --text-title-h3: #8ba36f;
+  --text-title-h4: #6f9ed0;
+  --text-title-h5: #b58ad6;
+  --text-title-h6: #76b7a8;
+  --text-link: #6f9ed0;
+  --text-accent: #c94f37;
+  --text-accent-hover: #d1624f;
+  --interactive-accent: #0d1722;
+  --interactive-accent-hover: #6f9ed0;
+  --code-normal: #76b7a8;
+  --code-background: #090a08;
+  --tag-color: #e7dec8;
+  --tag-background: #0d1722;
+  --graph-line: #343832;
+  --graph-node: #c94f37;
+  --graph-node-focused: #8fb6dd;
+  --graph-node-tag: #76b7a8;
+  --graph-node-attachment: #8ba36f;
+  --radius-s: 0;
+  --radius-m: 0;
+  --radius-l: 0;
+}
+
+.cm-header-1,
+.markdown-rendered h1 { color: var(--text-title-h1); }
+.cm-header-2,
+.markdown-rendered h2 { color: var(--text-title-h2); }
+.cm-header-3,
+.markdown-rendered h3 { color: var(--text-title-h3); }
+.cm-header-4,
+.markdown-rendered h4 { color: var(--text-title-h4); }
+.cm-header-5,
+.markdown-rendered h5 { color: var(--text-title-h5); }
+.cm-header-6,
+.markdown-rendered h6 { color: var(--text-title-h6); }
+
+.markdown-rendered code {
+  color: #76b7a8;
+}
+
+.cm-s-obsidian span.cm-keyword { color: #c94f37; }
+.cm-s-obsidian span.cm-string { color: #8ba36f; }
+.cm-s-obsidian span.cm-number { color: #d0a85a; }
+.cm-s-obsidian span.cm-comment { color: #343832; }
+.cm-s-obsidian span.cm-operator { color: #76b7a8; }
+.cm-s-obsidian span.cm-def { color: #6f9ed0; }
+
+.markdown-rendered a,
+.workspace-leaf.mod-active .workspace-leaf-header-title,
+.nav-file-title.is-active,
+.search-result-file-title {
+  color: #6f9ed0;
+}
+
+.markdown-rendered blockquote {
+  border-left-color: #c94f37;
+}

@@ -1,0 +1,52 @@
+@-moz-document url-prefix("chrome:") {
+  :root {
+    --lwt-accent-color: #030403 !important;
+    --lwt-text-color: #c8c2aa !important;
+    --toolbar-bgcolor: #030403 !important;
+    --toolbar-color: #c8c2aa !important;
+    --tabs-border-color: #090a08 !important;
+    --tab-selected-bgcolor: #0d1722 !important;
+    --tab-selected-color: #8fb6dd !important;
+    --urlbar-box-bgcolor: #090a08 !important;
+    --urlbar-box-text-color: #c8c2aa !important;
+    --urlbarView-highlight-background: #0d1722 !important;
+    --urlbarView-highlight-color: #8fb6dd !important;
+    --arrowpanel-background: #030403 !important;
+    --arrowpanel-color: #c8c2aa !important;
+    --arrowpanel-border-color: #343832 !important;
+  }
+
+  #navigator-toolbox {
+    border-bottom: 2px solid #090a08 !important;
+  }
+
+  #TabsToolbar,
+  #nav-bar,
+  #PersonalToolbar {
+    background: #030403 !important;
+    color: #c8c2aa !important;
+  }
+
+  .tab-background {
+    border-radius: 0 !important;
+    margin-block: 0 !important;
+  }
+
+  .tabbrowser-tab[selected="true"] .tab-background {
+    background: #0d1722 !important;
+    outline: 0 !important;
+  }
+
+  #urlbar-background,
+  #searchbar {
+    background: #030403 !important;
+    border: 1px solid #343832 !important;
+    border-radius: 0 !important;
+  }
+
+  toolbarbutton,
+  toolbaritem,
+  .toolbarbutton-1 {
+    border-radius: 0 !important;
+  }
+}

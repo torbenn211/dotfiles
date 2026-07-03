@@ -1,0 +1,22 @@
+{
+  "name": "lain-wired-i3",
+  "displayName": "Lain Wired i3",
+  "description": "Black, red, square-edged Omarchy/i3 style theme.",
+  "version": "0.1.0",
+  "publisher": "omarchy-lain-wired",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Lain Wired i3",
+        "uiTheme": "vs-dark",
+        "path": "./themes/lain-wired-i3-color-theme.json"
+      }
+    ]
+  }
+}

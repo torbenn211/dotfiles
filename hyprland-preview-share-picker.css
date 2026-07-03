@@ -1,0 +1,95 @@
+@define-color foreground #c8c2aa;
+@define-color background #030403;
+@define-color accent #c94f37;
+@define-color focus #6f9ed0;
+@define-color muted #343832;
+@define-color card_bg #090a08;
+@define-color text_dark #030403;
+@define-color accent_hover #d1624f;
+@define-color selected_tab #6f9ed0;
+@define-color text #c8c2aa;
+
+* {
+  all: unset;
+  color: @foreground;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.window {
+  background: alpha(@background, 0.96);
+  border: solid 2px @accent;
+  margin: 4px;
+  padding: 16px;
+}
+
+tabs {
+  padding: 8px 10px;
+}
+
+tabs > tab {
+  margin-right: 12px;
+}
+
+.tab-label {
+  color: @text;
+}
+
+tabs > tab:checked > .tab-label,
+tabs > tab:active > .tab-label {
+  color: @selected_tab;
+  text-decoration: underline currentColor;
+}
+
+.page {
+  padding: 12px;
+}
+
+.image-label {
+  font-size: 12px;
+  padding: 4px;
+}
+
+flowboxchild > .card,
+button > .card {
+  background-color: @card_bg;
+  border: solid 2px @background;
+  border-radius: 0;
+  padding: 5px;
+}
+
+flowboxchild:hover > .card,
+button:hover > .card,
+flowboxchild:active > .card,
+flowboxchild:selected > .card,
+button:active > .card,
+button:selected > .card,
+button:focus > .card {
+  border: solid 2px @focus;
+}
+
+.image {
+  border-radius: 0;
+}
+
+.region-button {
+  background-color: @accent;
+  border-radius: 0;
+  color: @text_dark;
+  padding: 8px 14px;
+}
+
+.region-button > label {
+  color: @text_dark;
+}
+
+.region-button:not(:disabled):hover,
+.region-button:not(:disabled):focus {
+  background-color: @accent_hover;
+}
+
+.region-button:disabled {
+  background-color: @muted;
+  color: @background;
+}

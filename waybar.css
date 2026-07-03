@@ -1,0 +1,148 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrains Mono Nerd Font", "Noto Color Emoji", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+window#waybar {
+  background: #030403;
+  border-top: 2px solid #090a08;
+  color: #c8c2aa;
+}
+
+#custom-menu,
+#custom-dev,
+#workspaces button,
+#submap,
+#custom-project,
+#custom-git,
+#window,
+#custom-keystroke,
+#custom-updates,
+#custom-weather,
+#custom-traffic,
+#custom-todo,
+#idle_inhibitor,
+#battery,
+#tray,
+#network,
+#pulseaudio,
+#cpu,
+#memory,
+#custom-cpu_temp,
+#custom-gpu_usage,
+#custom-gpu_temp,
+#clock {
+  background: transparent;
+  color: #c8c2aa;
+  padding: 0 8px;
+}
+
+#custom-menu {
+  background: #090a08;
+  color: #e7dec8;
+  padding: 0 12px;
+}
+
+#custom-dev {
+  background: #0d1722;
+  color: #8fb6dd;
+  padding: 0 10px;
+}
+
+#workspaces button {
+  color: #343832;
+  min-width: 22px;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  background: #0d1722;
+  color: #8fb6dd;
+}
+
+#workspaces button.urgent {
+  background: #c94f37;
+  color: #030403;
+}
+
+#submap,
+#idle_inhibitor.activated,
+#battery.critical,
+#pulseaudio.muted,
+#network.disconnected {
+  color: #c94f37;
+}
+
+#custom-updates.dirty,
+#custom-git.dirty {
+  background: #241815;
+  color: #e7dec8;
+}
+
+#custom-updates.clean,
+#custom-git.clean,
+#custom-project.none {
+  color: #625f55;
+}
+
+#custom-project.native {
+  color: #d0a85a;
+}
+
+#custom-project.vm,
+#custom-project.script {
+  color: #76b7a8;
+}
+
+#custom-project.web {
+  color: #b58ad6;
+}
+
+#custom-cpu_temp.warning,
+#custom-gpu_temp.warning,
+#battery.warning {
+  color: #e6c06f;
+}
+
+#custom-cpu_temp.critical,
+#custom-gpu_temp.critical {
+  background: #241815;
+  color: #e7dec8;
+}
+
+#window {
+  color: #625f55;
+}
+
+#custom-keystroke {
+  color: #e7dec8;
+  min-width: 120px;
+}
+
+#clock {
+  color: #e7dec8;
+}
+
+#tray menu {
+  background: #030403;
+  border: 1px solid #343832;
+  color: #e7dec8;
+}
+
+#battery.charging {
+  color: #8ba36f;
+}
+
+@keyframes blink {
+  50% { opacity: 0.35; }
+}
+
+#battery.critical {
+  animation: blink 1s linear infinite;
+}

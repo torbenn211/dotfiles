@@ -1,0 +1,32 @@
+add_newline = true
+command_timeout = 200
+format = "[ $directory$git_branch$git_status ]($style)$character"
+
+[character]
+success_symbol = "[>](bold red)"
+error_symbol = "[x](bold red)"
+
+[directory]
+truncation_length = 2
+truncation_symbol = "../"
+style = "bold white"
+repo_root_style = "bold red"
+repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+format = "[git:$branch]($style) "
+style = "bold red"
+
+[git_status]
+format = "[$all_status]($style)"
+style = "red"
+ahead = "up:${count} "
+behind = "down:${count} "
+diverged = "up:${ahead_count} down:${behind_count} "
+conflicted = "conflict "
+untracked = "? "
+modified = "* "
+staged = "+ "
+renamed = "rename "
+deleted = "del "
+stashed = "stash "

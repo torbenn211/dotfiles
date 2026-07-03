@@ -1,0 +1,32 @@
+# Lain Wired i3
+[colors.primary]
+background = "#030403"
+foreground = "#c8c2aa"
+
+[colors.cursor]
+cursor = "#e7dec8"
+text = "#030403"
+
+[colors.selection]
+background = "#0d1722"
+foreground = "#8fb6dd"
+
+[colors.normal]
+black = "#090a08"
+red = "#c94f37"
+green = "#8ba36f"
+yellow = "#d0a85a"
+blue = "#6f9ed0"
+magenta = "#b58ad6"
+cyan = "#76b7a8"
+white = "#c8c2aa"
+
+[colors.bright]
+black = "#343832"
+red = "#d1624f"
+green = "#a6b98a"
+yellow = "#e6c06f"
+blue = "#8fb6dd"
+magenta = "#c79ee6"
+cyan = "#9bd8ca"
+white = "#e7dec8"

@@ -1,0 +1,9 @@
+@define-color background-color #030403;
+@define-color border-color #c94f37;
+@define-color label #c8c2aa;
+@define-color image #e7dec8;
+@define-color progress #c94f37;
+
+window {
+  border-radius: 0;
+}

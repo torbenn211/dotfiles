@@ -6,6 +6,7 @@ theme_name="${OMARCHY_I3_THEME_NAME:-lain-wired-i3}"
 target_dir="$HOME/.config/omarchy/themes/$theme_name"
 hook_path="$HOME/.config/omarchy/hooks/theme-set.d/90-lain-wired-i3-extras"
 stamp="lain-wired-i3"
+boot_marker="$HOME/.config/omarchy/.${stamp}-boot-theme"
 assume_yes=false
 dry_run=false
 reboot_after_install="ask"
@@ -123,6 +124,77 @@ offer_reboot() {
   esac
 }
 
+can_prompt_for_sudo() {
+  [[ -t 0 ]] && return 0
+  sudo -n true >/dev/null 2>&1
+}
+
+apply_boot_theme() {
+  [[ "${OMARCHY_I3_SKIP_BOOT_THEME:-0}" == "1" ]] && {
+    step "Skipping Plymouth/SDDM boot theme because OMARCHY_I3_SKIP_BOOT_THEME=1"
+    return 0
+  }
+
+  command -v omarchy-plymouth-set-by-theme >/dev/null 2>&1 || {
+    step "omarchy-plymouth-set-by-theme was not found; skipping boot splash theme"
+    return 0
+  }
+
+  local asset_dir="$target_dir"
+  [[ "$dry_run" == true ]] && asset_dir="$source_dir"
+
+  [[ -f "$asset_dir/colors.toml" && -f "$asset_dir/unlock.png" ]] || {
+    step "Boot splash assets are missing; skipping boot splash theme"
+    return 0
+  }
+
+  if [[ "$dry_run" == true ]]; then
+    printf '[dry-run] omarchy-plymouth-set-by-theme %s\n' "$theme_name"
+    printf '[dry-run] touch %s\n' "$boot_marker"
+    return 0
+  fi
+
+  if ! can_prompt_for_sudo; then
+    step "Skipping Plymouth/SDDM boot theme because sudo cannot prompt here"
+    return 0
+  fi
+
+  step "Applying Plymouth/SDDM boot theme from $theme_name"
+  if omarchy-plymouth-set-by-theme "$theme_name"; then
+    mkdir -p "$(dirname "$boot_marker")"
+    printf '%s\n' "$theme_name" >"$boot_marker"
+  else
+    step "Boot theme command failed; continuing with user-level theme files"
+  fi
+}
+
+reset_boot_theme() {
+  [[ -e "$boot_marker" ]] || return 0
+
+  command -v omarchy-plymouth-reset >/dev/null 2>&1 || {
+    step "Boot theme marker exists, but omarchy-plymouth-reset was not found"
+    return 0
+  }
+
+  if [[ "$dry_run" == true ]]; then
+    printf '[dry-run] omarchy-plymouth-reset\n'
+    printf '[dry-run] rm -f %s\n' "$boot_marker"
+    return 0
+  fi
+
+  if ! can_prompt_for_sudo; then
+    step "Skipping Plymouth/SDDM boot reset because sudo cannot prompt here"
+    return 0
+  fi
+
+  step "Resetting Plymouth/SDDM boot theme to Omarchy defaults"
+  if omarchy-plymouth-reset; then
+    rm -f "$boot_marker"
+  else
+    step "Boot reset command failed; leaving marker at $boot_marker"
+  fi
+}
+
 install_plan() {
   cat <<EOF
 This installer will:
@@ -139,9 +211,9 @@ This installer will:
    VS Code/VSCodium/Cursor theme metadata.
 
 4. Apply the full rice extras:
-   bottom i3-style developer Waybar layout and scripts, project HUD module,
-   custom developer workspace launcher, custom Omarchy menu, Wofi style, Starship prompt, tmux, LazyGit,
-   Fastfetch, Zed, GTK, Typora, Bat, Firefox-like browser chrome,
+   bottom i3bar-style Waybar layout and hardware scripts,
+   custom developer workspace launcher, upstream Omarchy menu restore, Wofi style, Starship prompt, tmux, LazyGit,
+   Fastfetch, Omarchy about/screensaver branding, Zed, GTK, Typora, Bat, Firefox-like browser chrome,
    and a local VS Code-compatible theme extension.
 
 5. Create one-time backups next to changed files, ending in:
@@ -149,7 +221,9 @@ This installer will:
 
 6. Restart/reload supported running apps when Omarchy commands exist.
 
-7. Offer an optional reboot after install so the full rice can reload cleanly.
+7. Apply the matching Plymouth/SDDM boot splash through Omarchy when sudo can prompt.
+
+8. Offer an optional reboot after install so the full rice can reload cleanly.
 EOF
 }
 
@@ -164,8 +238,8 @@ The uninstaller will:
    fallback theme before deleting anything.
 
 3. Restore backups for managed files where backups exist:
-   Waybar, Waybar scripts, Omarchy menu override, Wofi, Starship,
-   tmux, LazyGit, Fastfetch, Zed, GTK, Typora, Bat, developer layout
+   Waybar, Waybar scripts, legacy Omarchy menu override, Wofi, Starship,
+   tmux, LazyGit, Fastfetch, Omarchy branding, Zed, GTK, Typora, Bat, developer layout
    command, and Firefox-like browser chrome.
 
 4. Remove managed files that had no previous backup.
@@ -174,6 +248,8 @@ The uninstaller will:
 
 6. Remove the installed theme directory:
    $target_dir
+
+7. Reset Plymouth/SDDM boot splash to Omarchy defaults if this installer applied it.
 EOF
 }
 
@@ -234,6 +310,7 @@ install_full() {
   chmod_theme_scripts "$target_dir"
   install_hook
   apply_theme
+  apply_boot_theme
 
   step "Install complete"
   offer_reboot
@@ -316,6 +393,7 @@ uninstall_full() {
   remove_hook
   switch_from_theme_if_active
   uninstall_extras
+  reset_boot_theme
   remove_theme_dir
 
   step "Uninstall complete"
@@ -338,6 +416,12 @@ show_status() {
     say "hook:       installed"
   else
     say "hook:       missing"
+  fi
+
+  if [[ -e "$boot_marker" ]]; then
+    say "boot:       themed by installer"
+  else
+    say "boot:       not marked by installer"
   fi
 
   say "current:    $(current_theme || true)"

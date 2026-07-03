@@ -77,8 +77,22 @@ uninstall_waybar() {
 }
 
 install_menu() {
-  [[ -f "$theme_dir/extras/omarchy/menu.sh" ]] || return 0
-  copy_exec "$theme_dir/extras/omarchy/menu.sh" "$HOME/.config/omarchy/extensions/menu.sh"
+  local target="$HOME/.config/omarchy/extensions/menu.sh"
+  local backup="${target}.before-${stamp}"
+
+  if [[ -e "$backup" ]]; then
+    log "Restoring default Omarchy menu extension from $backup"
+    rm -f "$target"
+    mv "$backup" "$target"
+  elif [[ -f "$target" ]] && grep -q 'Lain Wired i3 menu override' "$target"; then
+    log "Removing legacy Lain Wired i3 menu override so upstream Omarchy menu is used"
+    rm -f "$target"
+  elif [[ -f "$target" ]] && grep -q 'Legacy placeholder kept so old packages can uninstall cleanly' "$target"; then
+    log "Removing legacy Lain Wired i3 menu placeholder so upstream Omarchy menu is used"
+    rm -f "$target"
+  else
+    log "Keeping upstream/current Omarchy menu behavior"
+  fi
 }
 
 uninstall_menu() {
@@ -101,6 +115,16 @@ install_wofi() {
 
 uninstall_wofi() {
   restore_or_remove "$HOME/.config/wofi/style.css"
+}
+
+install_branding() {
+  [[ -f "$theme_dir/extras/omarchy/branding/about.txt" ]] && copy_file "$theme_dir/extras/omarchy/branding/about.txt" "$HOME/.config/omarchy/branding/about.txt"
+  [[ -f "$theme_dir/extras/omarchy/branding/screensaver.txt" ]] && copy_file "$theme_dir/extras/omarchy/branding/screensaver.txt" "$HOME/.config/omarchy/branding/screensaver.txt"
+}
+
+uninstall_branding() {
+  restore_or_remove "$HOME/.config/omarchy/branding/about.txt"
+  restore_or_remove "$HOME/.config/omarchy/branding/screensaver.txt"
 }
 
 install_app_configs() {
@@ -250,9 +274,11 @@ show_status() {
   status_line "theme directory" "$theme_dir"
   status_line "theme-set hook" "$HOME/.config/omarchy/hooks/theme-set.d/90-lain-wired-i3-extras"
   status_line "waybar config" "$HOME/.config/waybar/config.jsonc"
-  status_line "menu override" "$HOME/.config/omarchy/extensions/menu.sh"
+  status_line "menu extension" "$HOME/.config/omarchy/extensions/menu.sh"
   status_line "developer layout command" "$HOME/.local/bin/omarchy-lain-dev-layout"
   status_line "wofi style" "$HOME/.config/wofi/style.css"
+  status_line "about branding" "$HOME/.config/omarchy/branding/about.txt"
+  status_line "screensaver branding" "$HOME/.config/omarchy/branding/screensaver.txt"
   status_line "starship config" "$HOME/.config/starship.toml"
   status_line "tmux config" "$HOME/.config/tmux/tmux.conf"
   status_line "lazygit config" "$HOME/.config/lazygit/config.yml"
@@ -279,6 +305,7 @@ install)
   install_menu
   install_dev_layout
   install_wofi
+  install_branding
   install_app_configs
   install_firefox_like_profiles
   install_vscode_extension
@@ -290,6 +317,7 @@ uninstall)
   uninstall_menu
   uninstall_dev_layout
   uninstall_wofi
+  uninstall_branding
   uninstall_app_configs
   uninstall_firefox_like_profiles
   uninstall_vscode_extension

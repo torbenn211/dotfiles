@@ -1,0 +1,7 @@
+LAIN WIRED I3
+
+black / red / terminal
+square borders, zero gaps
+default-ish i3 muscle memory
+
+      [1] [2] [3] [4] [5]       cpu mem gpu net vol time

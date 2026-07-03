@@ -1,8 +1,8 @@
 # Lain Wired i3 for Omarchy
 
-A square black/red Omarchy rice based on the Torbenn211 dotfiles vibe: bottom i3-style developer bar, hard edges, near-black surfaces, compiler-diagnostic accents, Lain wallpapers, and app configs that do not look like stock Omarchy.
+A square black/red Omarchy rice based on the Torbenn211 dotfiles vibe: default-i3-like bottom bar, hard edges, zero gaps, near-black surfaces, compiler-diagnostic red accents, Lain wallpapers, and terminal-first app configs.
 
-It keeps Lain as the visual center and pushes the surrounding desktop toward a handmade terminal/devlog/systems-programming feel. It is inspired by that kind of programming-stream energy, but it does not copy any creator's exact branding, logo, or artwork.
+It keeps Lain as the visual center and pushes the surrounding desktop toward a handmade programming-video terminal setup: plain i3 muscle memory first, black/red color second. It does not copy any creator's exact branding, logo, or artwork.
 
 ## What It Themes
 
@@ -13,7 +13,7 @@ It keeps Lain as the visual center and pushes the surrounding desktop toward a h
 - Browsers: Chromium/Chrome/Brave/Edge through Omarchy policy, plus Firefox/Zen/LibreWolf profile chrome when profiles exist.
 - TUI/dev tools: btop, Starship, tmux, LazyGit, Fastfetch, Bat.
 - Desktop/app extras: GTK 3/4 surfaces, Typora markdown theme.
-- Extras: custom text-first Omarchy menu, bottom developer Waybar layout, project HUD module, developer workspace launcher, Waybar scripts, VS Code-compatible local theme extension.
+- Extras: upstream Omarchy menu restore, bottom i3bar-style Waybar layout, hardware status scripts, developer workspace launcher, Waybar scripts, VS Code-compatible local theme extension.
 
 ## TUI Installer
 
@@ -67,13 +67,14 @@ Managed extra files include:
 
 - `~/.config/waybar/config.jsonc`
 - `~/.config/waybar/scripts/*`
-- `~/.config/omarchy/extensions/menu.sh`
 - `~/.local/bin/omarchy-lain-dev-layout`
 - `~/.config/wofi/style.css`
 - `~/.config/starship.toml`
 - `~/.config/tmux/tmux.conf`
 - `~/.config/lazygit/config.yml`
 - `~/.config/fastfetch/config.jsonc`
+- `~/.config/omarchy/branding/about.txt`
+- `~/.config/omarchy/branding/screensaver.txt`
 - `~/.config/zed/settings.json`
 - `~/.config/gtk-3.0/gtk.css`
 - `~/.config/gtk-4.0/gtk.css`
@@ -91,9 +92,11 @@ export OMARCHY_I3_DEV_ROOT="$HOME/code/my-project"
 export OMARCHY_I3_DEV_URL="https://devdocs.io"
 ```
 
-Add those to your shell profile or Omarchy environment if you want the Waybar weather/todo modules to use custom values.
+Add those to your shell profile or Omarchy environment if you re-enable the optional Waybar weather/todo modules or want the developer launcher to use custom paths.
 
 The developer layout launcher opens a terminal/tmux workspace, editor workspace, browser workspace, and btop workspace. You can also tune workspace numbers with `OMARCHY_I3_DEV_WS_SHELL`, `OMARCHY_I3_DEV_WS_EDITOR`, `OMARCHY_I3_DEV_WS_WEB`, and `OMARCHY_I3_DEV_WS_MONITOR`.
+
+Set `OMARCHY_I3_SKIP_BOOT_THEME=1` before installing if you want to skip the Plymouth/SDDM boot splash step.
 
 ## Development Helpers
 

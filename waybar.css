@@ -1,3 +1,16 @@
+@define-color bg #030403;
+@define-color foreground #c8c2aa;
+@define-color background #030403;
+@define-color surface #090a08;
+@define-color surface2 #16100f;
+@define-color inactive #343832;
+@define-color dim #625f55;
+@define-color focus #d8d0ba;
+@define-color focus_text #030403;
+@define-color urgent #d1624f;
+@define-color warning #d0a85a;
+@define-color good #8ba36f;
+
 * {
   border: none;
   border-radius: 0;
@@ -10,25 +23,14 @@
 }
 
 window#waybar {
-  background: #030403;
-  border-top: 2px solid #090a08;
-  color: #c8c2aa;
+  background: @background;
+  border-top: 2px solid @inactive;
+  color: @foreground;
 }
 
-#custom-menu,
-#custom-dev,
 #workspaces button,
 #submap,
-#custom-project,
-#custom-git,
 #window,
-#custom-keystroke,
-#custom-updates,
-#custom-weather,
-#custom-traffic,
-#custom-todo,
-#idle_inhibitor,
-#battery,
 #tray,
 #network,
 #pulseaudio,
@@ -39,36 +41,44 @@ window#waybar {
 #custom-gpu_temp,
 #clock {
   background: transparent;
-  color: #c8c2aa;
+  color: @foreground;
   padding: 0 8px;
 }
 
-#custom-menu {
-  background: #090a08;
-  color: #e7dec8;
-  padding: 0 12px;
-}
-
-#custom-dev {
-  background: #0d1722;
-  color: #8fb6dd;
-  padding: 0 10px;
-}
-
 #workspaces button {
-  color: #343832;
-  min-width: 22px;
+  all: initial;
+  background: transparent;
+  border: 1px solid transparent;
+  border-left: 2px solid transparent;
+  color: @dim;
+  font-family: "JetBrains Mono Nerd Font", "Noto Color Emoji", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 2px 1px;
+  min-height: 18px;
+  min-width: 18px;
+  padding: 0;
+}
+
+#workspaces button.visible {
+  color: @foreground;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
 }
 
 #workspaces button.active,
 #workspaces button.focused {
-  background: #0d1722;
-  color: #8fb6dd;
+  background: @surface2;
+  border: 1px solid @inactive;
+  border-left: 2px solid @focus;
+  color: @foreground;
 }
 
 #workspaces button.urgent {
-  background: #c94f37;
-  color: #030403;
+  background: @urgent;
+  color: @focus_text;
 }
 
 #submap,
@@ -76,28 +86,31 @@ window#waybar {
 #battery.critical,
 #pulseaudio.muted,
 #network.disconnected {
-  color: #c94f37;
+  color: @urgent;
 }
 
 #custom-updates.dirty,
 #custom-git.dirty {
-  background: #241815;
-  color: #e7dec8;
+  background: @surface2;
+  color: @foreground;
 }
 
 #custom-updates.clean,
 #custom-git.clean,
+#custom-gpu_usage.unavailable,
+#custom-gpu_temp.unavailable,
+#custom-cpu_temp.unavailable,
 #custom-project.none {
-  color: #625f55;
+  color: @dim;
 }
 
 #custom-project.native {
-  color: #d0a85a;
+  color: @warning;
 }
 
 #custom-project.vm,
 #custom-project.script {
-  color: #76b7a8;
+  color: @good;
 }
 
 #custom-project.web {
@@ -107,36 +120,36 @@ window#waybar {
 #custom-cpu_temp.warning,
 #custom-gpu_temp.warning,
 #battery.warning {
-  color: #e6c06f;
+  color: @warning;
 }
 
 #custom-cpu_temp.critical,
 #custom-gpu_temp.critical {
-  background: #241815;
-  color: #e7dec8;
+  background: @surface2;
+  color: @urgent;
 }
 
 #window {
-  color: #625f55;
+  color: @dim;
 }
 
 #custom-keystroke {
-  color: #e7dec8;
+  color: @foreground;
   min-width: 120px;
 }
 
 #clock {
-  color: #e7dec8;
+  color: @foreground;
 }
 
 #tray menu {
-  background: #030403;
-  border: 1px solid #343832;
-  color: #e7dec8;
+  background: @background;
+  border: 1px solid @inactive;
+  color: @foreground;
 }
 
 #battery.charging {
-  color: #8ba36f;
+  color: @good;
 }
 
 @keyframes blink {

@@ -1,7 +1,8 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "small",
+    "type": "data",
+    "source": " __        _          _ _____\n|  |   ___|_|___     |_|___  |\n|  |__| .'| |   |    | |   | |\n|_____|__,|_|_|_|    |_|_____|\n\nLAIN WIRED I3",
     "color": {
       "1": "red",
       "2": "bright_red"
@@ -14,7 +15,15 @@
   },
   "display": {
     "separator": " :: ",
-    "color": "red"
+    "color": {
+      "keys": "red",
+      "title": "bright_red",
+      "output": "white",
+      "separator": "red"
+    },
+    "key": {
+      "type": "string"
+    }
   },
   "modules": [
     "break",
@@ -58,6 +67,11 @@
       "keyColor": "red"
     },
     {
+      "type": "gpu",
+      "key": "gpu",
+      "keyColor": "red"
+    },
+    {
       "type": "uptime",
       "key": "up",
       "keyColor": "red"
@@ -68,6 +82,7 @@
       "keyColor": "red",
       "text": "omarchy-theme-current 2>/dev/null || echo lain-wired-i3"
     },
+    "colors",
     "break"
   ]
 }

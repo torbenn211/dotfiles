@@ -1,12 +1,12 @@
-local active_border_color = "rgba(6f9ed0ee)"
-local inactive_border_color = "rgba(343832aa)"
+local active_border_color = "rgba(c94f37ee)"
+local inactive_border_color = "rgba(343832cc)"
 local group_bg = "rgba(030403cc)"
-local focus_bg = "rgba(0d1722ee)"
+local focus_bg = "rgba(241815ee)"
 
 hl.config({
   general = {
-    gaps_in = 3,
-    gaps_out = 7,
+    gaps_in = 0,
+    gaps_out = 0,
     border_size = 2,
     layout = "dwindle",
     col = {
@@ -18,7 +18,7 @@ hl.config({
   decoration = {
     rounding = 0,
     active_opacity = 1.0,
-    inactive_opacity = 0.96,
+    inactive_opacity = 1.0,
     shadow = {
       enabled = false,
     },
@@ -51,7 +51,7 @@ hl.config({
   },
 
   animations = {
-    enabled = true,
+    enabled = false,
   },
 
   dwindle = {
@@ -66,12 +66,10 @@ hl.config({
   },
 })
 
-hl.curve("lainSnappy", { type = "bezier", points = { { 0.1, 1.0 }, { 0.1, 1.0 } } })
-
-hl.animation({ leaf = "global", enabled = true, speed = 1, bezier = "lainSnappy" })
-hl.animation({ leaf = "windows", enabled = true, speed = 3, bezier = "lainSnappy", style = "slide" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 3, bezier = "lainSnappy", style = "slide" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 3, bezier = "lainSnappy" })
-hl.animation({ leaf = "border", enabled = true, speed = 4, bezier = "lainSnappy" })
+hl.animation({ leaf = "global", enabled = false })
+hl.animation({ leaf = "windows", enabled = false })
+hl.animation({ leaf = "windowsOut", enabled = false })
+hl.animation({ leaf = "windowsMove", enabled = false })
+hl.animation({ leaf = "border", enabled = false })
 hl.animation({ leaf = "fade", enabled = false })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 3, bezier = "lainSnappy", style = "slidevert" })
+hl.animation({ leaf = "workspaces", enabled = false })

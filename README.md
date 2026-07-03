@@ -72,6 +72,7 @@ Managed extra files include:
 - `~/.config/starship.toml`
 - `~/.config/tmux/tmux.conf`
 - `~/.config/lazygit/config.yml`
+- `~/.config/fastfetch/lain-logo.txt`
 - `~/.config/fastfetch/config.jsonc`
 - `~/.config/omarchy/branding/about.txt`
 - `~/.config/omarchy/branding/screensaver.txt`

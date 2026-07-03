@@ -96,6 +96,7 @@ check_required_files() {
     preview.png
     backgrounds/lain1.png
     install.sh
+    extras/apps/fastfetch-lain-logo.txt
     extras/omarchy/branding/about.txt
     extras/omarchy/branding/screensaver.txt
     extras/omarchy/apply-extras.sh

@@ -57,6 +57,7 @@ restore_or_remove() {
 }
 
 install_waybar() {
+  [[ -f "$theme_dir/waybar.css" ]] && copy_file "$theme_dir/waybar.css" "$HOME/.config/waybar/style.css"
   [[ -f "$theme_dir/extras/waybar/config.jsonc" ]] || return 0
   copy_file "$theme_dir/extras/waybar/config.jsonc" "$HOME/.config/waybar/config.jsonc"
 
@@ -68,6 +69,7 @@ install_waybar() {
 }
 
 uninstall_waybar() {
+  restore_or_remove "$HOME/.config/waybar/style.css"
   restore_or_remove "$HOME/.config/waybar/config.jsonc"
 
   local script
@@ -275,6 +277,7 @@ status_line() {
 show_status() {
   status_line "theme directory" "$theme_dir"
   status_line "theme-set hook" "$HOME/.config/omarchy/hooks/theme-set.d/90-lain-wired-i3-extras"
+  status_line "waybar style" "$HOME/.config/waybar/style.css"
   status_line "waybar config" "$HOME/.config/waybar/config.jsonc"
   status_line "menu extension" "$HOME/.config/omarchy/extensions/menu.sh"
   status_line "developer layout command" "$HOME/.local/bin/omarchy-lain-dev-layout"

@@ -66,6 +66,7 @@ The uninstaller restores those backups when they exist. If a managed file had no
 Managed extra files include:
 
 - `~/.config/waybar/config.jsonc`
+- `~/.config/waybar/style.css`
 - `~/.config/waybar/scripts/*`
 - `~/.local/bin/omarchy-lain-dev-layout`
 - `~/.config/wofi/style.css`

@@ -8,6 +8,13 @@
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
+    "custom/project",
+    "custom/git",
+    "custom/keystroke",
+    "custom/todo",
+    "custom/updates",
+    "custom/weather",
+    "custom/traffic",
     "tray",
     "network",
     "pulseaudio",
@@ -70,6 +77,49 @@
     "format": "mem {percentage}%",
     "interval": 5
   },
+  "custom/project": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/project.sh",
+    "interval": 5,
+    "return-type": "json"
+  },
+  "custom/git": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/gitstatus.sh",
+    "interval": 5,
+    "return-type": "json"
+  },
+  "custom/keystroke": {
+    "format": "keys {}",
+    "exec": "$HOME/.config/waybar/scripts/keystroke.py",
+    "restart-interval": 1,
+    "tooltip": false
+  },
+  "custom/todo": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/todo.sh",
+    "interval": 30,
+    "return-type": "json"
+  },
+  "custom/updates": {
+    "format": "upd {}",
+    "exec": "$HOME/.config/waybar/scripts/updates.sh",
+    "interval": 900,
+    "return-type": "json"
+  },
+  "custom/weather": {
+    "format": "wx {}",
+    "exec": "$HOME/.config/waybar/scripts/weather.sh",
+    "interval": 600,
+    "max-length": 22,
+    "return-type": "json"
+  },
+  "custom/traffic": {
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/traffic.sh",
+    "interval": 2,
+    "return-type": "json"
+  },
   "custom/cpu_temp": {
     "format": "temp {}",
     "exec": "$HOME/.config/waybar/scripts/cputemp.sh",
@@ -89,8 +139,8 @@
     "return-type": "json"
   },
   "clock": {
-    "format": "{:%a %d.%m %H:%M}",
-    "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+    "format": "{:%a %d.%m %B %H:%M}",
+    "format-alt": "{:%Y-%m-%d %B %H:%M:%S}",
     "tooltip": false
   }
 }

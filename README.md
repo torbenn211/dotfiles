@@ -1,3 +1,5 @@
+# Vibe Coded btw
+
 # Lain Wired i3 for Omarchy
 
 A square black/red Omarchy rice based on the Torbenn211 dotfiles vibe: default-i3-like bottom bar, hard edges, zero gaps, near-black surfaces, compiler-diagnostic red accents, Lain wallpapers, and terminal-first app configs.
